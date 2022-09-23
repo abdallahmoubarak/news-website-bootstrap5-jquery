@@ -1,23 +1,23 @@
-const newsdata = [
-  {
-    title: "Roseland revisions revealed",
-    content:
-      "Anthony Mendoza, a young Roseland resident, has been appointed to complete the term of Rocio Mondragón Reyes, outgoing member of the Roseland Public Schools Board of Trustees. She has resigned her position as she moves out of the area.",
-  },
-  {
-    title: "Fran Fleet: Her accidental career fit like a glove",
-    content:
-      "How did a a nice young woman from Turlock end up fixing baseball gloves?",
-  },
-  {
-    title: "Nominate your Sonoma County hero",
-    content: "Tell us who you think should be a Sonoma County Gazette hero!",
-  },
-  {
-    title: "Geyserville gushing in",
-    content: "Lots of foodie news for us this month.",
-  },
-];
+// const newsdata = [
+//   {
+//     title: "Roseland revisions revealed",
+//     content:
+//       "Anthony Mendoza, a young Roseland resident, has been appointed to complete the term of Rocio Mondragón Reyes, outgoing member of the Roseland Public Schools Board of Trustees. She has resigned her position as she moves out of the area.",
+//   },
+//   {
+//     title: "Fran Fleet: Her accidental career fit like a glove",
+//     content:
+//       "How did a a nice young woman from Turlock end up fixing baseball gloves?",
+//   },
+//   {
+//     title: "Nominate your Sonoma County hero",
+//     content: "Tell us who you think should be a Sonoma County Gazette hero!",
+//   },
+//   {
+//     title: "Geyserville gushing in",
+//     content: "Lots of foodie news for us this month.",
+//   },
+// ];
 
 const news = (newslist) => {
   list = "";
@@ -34,5 +34,12 @@ const news = (newslist) => {
   });
   return list;
 };
-
-document.getElementById("newslist").innerHTML = news(newsdata);
+$(document).ready(() => {
+  $.get(
+    "http://localhost/github/news-website-bootstrap5-jquery/api/get_news.php",
+    (data) => {
+      $("#newslist").html(news(JSON.parse(data)));
+    }
+  );
+}, "json");
+// document.getElementById("newslist").innerHTML = news(newsdata);

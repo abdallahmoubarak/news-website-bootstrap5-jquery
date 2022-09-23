@@ -1,6 +1,6 @@
 <?php
 
-include('../backend/dbconnection.php');
+include('./connection.php');
 
 $query = $mysqli->prepare("SELECT * FROM news");
 $query->execute();
